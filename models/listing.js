@@ -7,7 +7,11 @@ const listingSchema = new Schema({
         required: true,
     },
     description: String,
-    image: String,
+    image: {
+        type: String,
+        default: "https://www.eclosio.ong/wp-content/uploads/2018/08/default.png",
+        set: (value) => value === "" ? "https://www.eclosio.ong/wp-content/uploads/2018/08/default.png" : value,
+    },
     price: Number,
     location: String,
     country: String,
