@@ -23,17 +23,23 @@ app.get('/', (req, res) => {
 });
 
 app.get('/listings', async (req, res) => {
-    let sampleListing = new Listing({
-        title:'My New villa',
-        description: 'By the beach',
-        price: 1200,
-        location: 'Calangute Goa',
-        country: 'India',
+    Listing.find({}).then((res) => {
+        console.log(res);
     });
-    await sampleListing.save();
-    console.log('sample was saved');
-    res.send('Listing created successfully!');
 });
+
+// app.get('/listings', async (req, res) => {
+//     let sampleListing = new Listing({
+//         title:'My New villa',
+//         description: 'By the beach',
+//         price: 1200,
+//         location: 'Calangute Goa',
+//         country: 'India',
+//     });
+//     await sampleListing.save();
+//     console.log('sample was saved');
+//     res.send('Listing created successfully!');
+// });
 
 app.listen(8080, () => {
     console.log('Server is running on port 8080');
